@@ -125,17 +125,25 @@ allBtn.addEventListener("click", showAllGames);
  * Challenge 6: Add more information at the top of the page about the company.
  * Skills used: template literals, ternary operator
 */
+// Calculate the number of unfunded games
+const unfundedGamesCount = GAMES_JSON.filter(game => game.pledged < game.goal).length;
 
-// grab the description container
+// Calculate the total amount of money raised
+const totalRaisedAmount = GAMES_JSON.reduce((acc, game) => acc + game.pledged, 0);
+
+// Use a template string with a ternary operator to create the display message
+const displayMessage = `
+    A total of $${totalRaisedAmount.toLocaleString()} has been raised for ${GAMES_JSON.length} games.
+    Currently, ${unfundedGamesCount} ${unfundedGamesCount === 1 ? "game remains" : "games remain"} unfunded.
+    We need your help to fund these amazing games!
+`;
+
+// Grab the description container and add the message to it
 const descriptionContainer = document.getElementById("description-container");
+const messageElement = document.createElement("p");
+messageElement.innerHTML = displayMessage;
+descriptionContainer.appendChild(messageElement);
 
-// use filter or reduce to count the number of unfunded games
-
-
-// create a string that explains the number of unfunded games using the ternary operator
-
-
-// create a new DOM element containing the template string and append it to the description container
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
