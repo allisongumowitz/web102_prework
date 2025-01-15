@@ -149,16 +149,22 @@ descriptionContainer.appendChild(messageElement);
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort 
  */
+// Step 1: Sort the games by the pledged amount
+const sortedGames = GAMES_JSON.sort((a, b) => b.pledged - a.pledged);
 
+// Step 2: Use destructuring to grab the top two games
+const [topGame, secondGame] = sortedGames;
+
+// Step 3: Display the top two games on the page
 const firstGameContainer = document.getElementById("first-game");
 const secondGameContainer = document.getElementById("second-game");
 
-const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
-    return item2.pledged - item1.pledged;
-});
+const topGameElement = document.createElement("p");
+topGameElement.innerHTML = topGame.name;
+firstGameContainer.appendChild(topGameElement);
 
-// use destructuring and the spread operator to grab the first and second games
-
-// create a new element to hold the name of the top pledge game, then append it to the correct element
-
-// do the same for the runner up item
+const secondGameElement = document.createElement("p");
+secondGameElement.innerHTML = secondGame.name;
+secondGameContainer.appendChild(secondGameElement);
+console.log(topGame.name);
+console.log(secondGame.name);
