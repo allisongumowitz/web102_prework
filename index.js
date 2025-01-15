@@ -48,6 +48,8 @@ const gamesContainer = document.getElementById("games-container");
     }
 
     addGamesToPage(GAMES_JSON);
+    console.log(GAMES_JSON.length);
+    
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
 
