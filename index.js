@@ -26,27 +26,28 @@ function deleteChildElements(parent) {
 const gamesContainer = document.getElementById("games-container");
 
 // create a function that adds all data from the games array to the page
-function addGamesToPage(games) {
 
-    // loop over each item in the data
+    function addGamesToPage(games) {
+        for (let game of games) {
+            // Create a new div element
+            const gameCard = document.createElement("div");
+    
+            // Add the class 'game-card' to the div
+            gameCard.classList.add("game-card");
+    
+            // Set the inner HTML using a template literal
+            gameCard.innerHTML = `
+                <img src="${game.img}" alt="${game.name}" class="game-img" />
+                <h3>${game.name}</h3>
+                <p>${game.description}</p>
+            `;
+    
+            // Append the game card to the games container
+            gamesContainer.appendChild(gameCard);
+        }
+    }
 
-
-        // create a new div element, which will become the game card
-
-
-        // add the class game-card to the list
-
-
-        // set the inner HTML using a template literal to display some info 
-        // about each game
-        // TIP: if your images are not displaying, make sure there is space
-        // between the end of the src attribute and the end of the tag ("/>")
-
-
-        // append the game to the games-container
-
-}
-
+    addGamesToPage(GAMES_JSON);
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
 
